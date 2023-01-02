@@ -1,16 +1,24 @@
-import string
+#A python program to illustrate Caesar Cipher Technique
+def encrypt(text,s):
+	result = ""
 
-alphabet = list(string.ascii_lowercase)  # Eng Alphabet
+	# traverse text
+	for i in range(len(text)):
+		char = text[i]
 
+		# Encrypt uppercase characters
+		if (char.isupper()):
+			result += chr((ord(char) + s-65) % 26 + 65)
 
-def encrypt():
-    originalText = 'a'
-    cipher = ''
-    shift = +3
-    for letter in originalText.lower():
-        if letter != ' ':
-            cipher += (chr(ord(letter) + shift))
-    print(cipher)
+		# Encrypt lowercase characters
+		else:
+			result += chr((ord(char) + s - 97) % 26 + 97)
 
+	return result
 
-encrypt()
+#check the above function
+text = "jeff bezos"
+s = 120
+print ("Text : " + text)
+print ("Shift : " + str(s))
+print ("Cipher: " + encrypt(text,s))
